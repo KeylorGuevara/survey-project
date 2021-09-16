@@ -1,0 +1,44 @@
+ <div class="container">
+    <div class="row">
+        <div class="col-8">
+            <h4>Seleccione las enfermedades que pueda identificar de su perfil clínico</h4>
+            <br>
+            <ul id="listaSintomas" class="listaSintomas">
+       
+            </ul>
+            <h4>También cuenta con las siguientes opciones: </h4>
+            <ul>
+        
+            
+            <div class="form-check" id="divCheckTodos">
+                <input class="form-check-input" type="checkbox" value="" (click)="marcaTodosFuntion()" id="inputCheckTodos"  (change)="onNativeChange($event)">
+                <label id="labelCheckTodos" class="form-check-label" for="flexCheckChecked">
+                Todos
+                </label>
+              </div>
+              
+              <div class="form-check" id="divCheckNinguno">
+            <input class="form-check-input" type="checkbox" value="" (click)="desmarcaTodosFuntion()" id="inputCheckNinguno" (change)="onNativeChangeNinguno($event)"  checked>
+            <label id="labelCheckNinguno" class="form-check-label" for="flexCheckChecked">
+            Ninguno
+            </label>
+            </div>
+        </ul>
+        </div>
+        <div class="col-4 oculta" id="mensajeAlerta">
+            <div class="card text-center" style="width: 18rem;">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTfFjlCzc9owcx6Abr-aaIZ62Ed9XAMS65AFg&usqp=CAU" class="card-img-top" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title text-center">Importante</h5>
+                  <p class="card-text">Por favor comunicarse al centro de salud más cercano, de la lista adjunta para
+                    recibir atención médica y una evaluación exacta.</p>
+                  <a href="#" class="btn btn-primary text-center" id="verCentrosSalud" (click)="muestraCentrosSalud()">Ver Centros de Salud</a>
+                </div>
+              </div>
+        </div>
+      </div>
+   
+ </div>
+
+
+ 

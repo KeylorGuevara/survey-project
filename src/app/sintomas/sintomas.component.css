@@ -1,0 +1,16 @@
+.oculta{
+    display:  none;
+}
+
+.muestra{
+    display: unset;
+}
+
+.card-img, .card-img-bottom, .card-img-top {
+    width: 60% !important;
+    margin-left: 19% !important;
+}
+
+.card {
+    margin-top: -25px;
+}
