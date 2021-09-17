@@ -7,6 +7,9 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { SintomasComponent } from './sintomas/sintomas.component';
 import { CentrosSaludComponent } from './centros-salud/centros-salud.component';
 import { FooterComponent } from './footer/footer.component';
+import { ContactComponent } from './contact/contact.component';
+import { PhoneComponent } from './phone/phone.component';
+import { InicioComponent } from './inicio/inicio.component';
 
 @NgModule({
   declarations: [
@@ -14,7 +17,10 @@ import { FooterComponent } from './footer/footer.component';
     NavbarComponent,
     SintomasComponent,
     CentrosSaludComponent,
-    FooterComponent
+    FooterComponent,
+    ContactComponent,
+    PhoneComponent,
+    InicioComponent
   ],
   imports: [
     BrowserModule,

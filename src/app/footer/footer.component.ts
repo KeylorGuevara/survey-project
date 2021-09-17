@@ -10,6 +10,13 @@ export class FooterComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    this.cargaFechaActual();
+  }
+
+  cargaFechaActual():any{
+    let spanFecha = document.getElementById("annoAutomatico") as HTMLSpanElement;
+    let anno = new Date().getFullYear().toString();
+    spanFecha.innerHTML= anno;
   }
 
 }
