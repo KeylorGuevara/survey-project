@@ -1,7 +1,7 @@
-import { CentrosSalud } from "./CentrosSalud";
 import { Injectable } from "@angular/core";
 import { Observable, of } from "rxjs";
-import { listaCentrosSalud } from "./dataCentrosSalud";
+import { listaCentrosSalud } from './dataCentrosSalud';
+import { CentrosSalud } from 'src/services/CentrosSalud';
 
 @Injectable({
     providedIn: 'root'
@@ -16,14 +16,10 @@ export class CentrosSaludService{
     }
 
 
-    //esta trambolico
-    getEntidadSalud(id: number):Observable<CentrosSalud[]>{
-        const centrosSalud = of(listaCentrosSalud);
-        for (const item of listaCentrosSalud)
-        {
-            console.log(item);
 
-        }
-        return centrosSalud;
+    //esta trambolico 
+    getEntidadSalud(id: number | any): CentrosSalud{
+        const centro = listaCentrosSalud.filter(x => x.id === id)[0];
+        return centro;
     }
 }

@@ -61,8 +61,6 @@ export class SintomasComponent implements OnInit {
 
     printSintomas(val:Sintoma[]):any{
       let ul = document.getElementById("listaSintomas") as HTMLDataListElement;
-      let lastOne = val[val.length - 1].id;
-      let penultimo = val[val.length - 2].id;
       for (const item of val)
       {
     
