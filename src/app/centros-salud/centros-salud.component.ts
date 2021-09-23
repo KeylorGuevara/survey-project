@@ -1,5 +1,4 @@
-import { collectExternalReferences } from '@angular/compiler';
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { fromEvent } from 'rxjs';
 import { CentrosSaludService } from 'src/services/centroSalud.service';
 import { CentrosSalud } from 'src/services/CentrosSalud';
@@ -10,20 +9,55 @@ import { CentrosSalud } from 'src/services/CentrosSalud';
   styleUrls: ['./centros-salud.component.css']
 })
 export class CentrosSaludComponent implements OnInit {
+  myTemplate  = '';
+  message: any;
+  @ViewChild('child1', {static: false}) firstChild!: ElementRef;
+  @ViewChild('child2', {static: false}) secondChild!: ElementRef;
+  @ViewChild('errors', {static: false}) errorChild!: ElementRef;
 
-  constructor( private centroSaludService : CentrosSaludService) { }
+  constructor( private centroSaludService : CentrosSaludService, private elementRef:ElementRef) { }
 
   ngOnInit(): void {
-    this.getCentrosSalud();
-    this.getDetalles();
+    this.message = 'Awais Text Change.';
+    //this.getCentrosSalud();
+    //this.getDetalles();
   }
 
   centrosSaludListado: CentrosSalud[]= [];
+
+  @ViewChild("myDiv") divView!: ElementRef;
+
+  addTemplate(){
+    this.myTemplate  = '<button type="button" class="my-button" id="my-button" (click)="openAlert()">click mee</buttn>';
+ }
+ openAlert() {
+    alert('hello');
+ 
+}
+//  ngAfterViewChecked (){
+//    if(this.elementRef.nativeElement.querySelectorAll('.my-button')){
+//      const a= this.elementRef.nativeElement.querySelectorAll('.my-button');
+//      console.log(a.length);
+//      for (var i = 0; i < a.length; i++) {
+//       a[i].style.backgroundColor = "red";
+//       //this.openAlert();
+//       if(a != null)
+//       {
+//         a.addEventListener('click', this.openAlert.bind(this),{once: true});
+//       }
+//       //this.elementRef.nativeElement.querySelector('#my-button').addEventListener('click', this.openAlert.bind(this),{once: true});
+//     }
+//    }
+//   }
 
   getCentrosSalud(): void{
     this.centroSaludService.getCentrosSalud()
     .subscribe( cs => this.muestraCentrosSalud(cs));
   }
+
+  changeRoute(value:any){
+    alert("Alerta!")
+   }
 
   muestraCentrosSalud(val: CentrosSalud[]):any{
     let ul = document.getElementById("cuerpoTabla") as HTMLDataListElement;
@@ -35,10 +69,12 @@ export class CentrosSaludComponent implements OnInit {
           <td> `+item.nombre+`</td>
           <td>`+item.correoElectronico+`</td>
           <td>`+item.direccionProvincia+`</td>
-          <td> <a class="enlaceDetalleCentroSalud">Ver Detalles</a> </td>
+          <td> <a routerLink="info/1'">Ver Detalles</a> </td>
+          <td> <p (click)="changeRoute($event)" >Ver Detalles v2</p> </td>
         </tr>`;
     }
   }
+  // <td> <a class="enlaceDetalleCentroSalud">Ver Detalles</a> </td>
 
   encuentra2(){
     let h1 = document.getElementById('h1NoTocar') as HTMLDivElement;
@@ -53,25 +89,28 @@ export class CentrosSaludComponent implements OnInit {
   }
   
   
-  getDetalles():any {
-    const centroS = document.getElementsByClassName('enlaceDetalleCentroSalud')!;
-    const observable = fromEvent(centroS, 'click');
-    observable.subscribe((centroS) => this.muestraCard() );
-  }
+  // getDetalles():any {
+  //   const centroS = document.getElementsByClassName('enlaceDetalleCentroSalud')!;
+  //   const observable = fromEvent(centroS, 'click');
+  //   observable.subscribe((centroS) => this.muestraCard() );
+  // }
 
-  muestraCard(){
-    this.encuentraID();
-    let idBuscar = this.encuentra2();
-    if(typeof(idBuscar) == 'string' )
-    {
-      const val =this.centroSaludService.getEntidadSalud(Number(idBuscar));
-      console.log(val.id);
-      console.log(val.correoElectronico);
-      console.log(val.nombre);
-      console.log(val.direccionProvincia);
-      }
+  // muestraCard(){
+  //   this.encuentraID();
+  //   let idBuscar = this.encuentra2();
+  //   if(typeof(idBuscar) == 'string' )
+  //   {
+  //     const val =this.centroSaludService.getEntidadSalud(Number(idBuscar));
+  //     console.log(val.id);
+  //     console.log(val.correoElectronico);
+  //     console.log(val.nombre);
+  //     console.log(val.direccionProvincia);
+  //     }
 
-  }
+  // }
+
+  
+
 
 }
 

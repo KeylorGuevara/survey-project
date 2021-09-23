@@ -8,9 +8,7 @@ import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 })
 export class ContactComponent implements OnInit {
 
-  constructor(
-    private routeConstructor: ActivatedRoute
-  ) { }
+  constructor(private routeConstructor: ActivatedRoute) { }
 
   name = "";
 
@@ -18,7 +16,7 @@ export class ContactComponent implements OnInit {
     this.routeConstructor.queryParams.subscribe(params =>{
       this.name = params['name'];
     });
-
+    
     let div = document.getElementById('idContacto') as HTMLDivElement;
     if(this.name != null)
     {
