@@ -6,6 +6,7 @@ import { PhoneComponent } from './phone/phone.component';
 import { InicioComponent } from './inicio/inicio.component';
 import { CentrosSaludComponent } from './centros-salud/centros-salud.component';
 import { EntidadSaludComponent } from './entidad-salud/entidad-salud.component';
+import { ErrorPageComponent } from './error-page/error-page.component';
 
 const routes: Routes = [
   {path: 'sintomas', component: SintomasComponent},
@@ -26,8 +27,10 @@ const routes: Routes = [
       }
     ]
   },
+  {path: 'inicio', component: InicioComponent},
+
    {path: '', redirectTo:'/inicio', pathMatch: 'full'},
-   { path: '**', component: InicioComponent   }
+   { path: '**', component: ErrorPageComponent   }
 ];
 
 @NgModule({

@@ -12,6 +12,7 @@ import { PhoneComponent } from './phone/phone.component';
 import { InicioComponent } from './inicio/inicio.component';
 import { EntidadSaludComponent } from './entidad-salud/entidad-salud.component';
 import { SafeHtmlPipe } from './safe-html.pipe';
+import { ErrorPageComponent } from './error-page/error-page.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { SafeHtmlPipe } from './safe-html.pipe';
     PhoneComponent,
     InicioComponent,
     EntidadSaludComponent,
-    SafeHtmlPipe
+    SafeHtmlPipe,
+    ErrorPageComponent
   ],
   imports: [
     BrowserModule,
