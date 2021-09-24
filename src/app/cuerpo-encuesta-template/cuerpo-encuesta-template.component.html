@@ -1,0 +1,29 @@
+<div class="container">
+    <h2>Formulario basado en Plantillas</h2>
+</div>
+<div class="container">
+    <form #encuestaForm='ngForm'>
+        <div [hidden]="encuestaForm.submitted">
+            <div class="cross-validation" [class.cross-validation-error]="(encuestaForm.touched || encuestaForm.dirty)">
+                <div class="form-group">
+                    <label for="nombre" class="form-label">Nombre</label>
+                    <input type="text" class="form-control" id="nombre" required minlength="5" appForbiddenValidation="Nombre"
+                    [(ngModel)]="encuestado.nombre" #nombre='ngModel'>
+
+                    <div *ngIf="nombre.invalid && (nombre.touched || nombre.dirty)">
+                        <!-- <div *ngIf="nombre.errors?required">¡El nombre es requerido!</div>
+                        <div *ngIf="nombre.errors?minlength">¡El nombre es demasiado pequeño!</div>
+                        <div *ngIf="nombre.errors?forbiddenName">¡Debe de cambiar el texto!</div> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        </form>
+        </div>
+
+
+<!-- 
+    validaciones básicas:
+    touched: cambios en el form
+    dirty: tiene un error
+-->

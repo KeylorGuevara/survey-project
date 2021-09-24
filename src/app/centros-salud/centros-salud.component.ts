@@ -19,7 +19,7 @@ export class CentrosSaludComponent implements OnInit {
 
   ngOnInit(): void {
     this.message = 'Awais Text Change.';
-    //this.getCentrosSalud();
+    this.getCentrosSalud();
     //this.getDetalles();
   }
 
@@ -69,8 +69,7 @@ export class CentrosSaludComponent implements OnInit {
           <td> `+item.nombre+`</td>
           <td>`+item.correoElectronico+`</td>
           <td>`+item.direccionProvincia+`</td>
-          <td> <a routerLink="info/1'">Ver Detalles</a> </td>
-          <td> <p (click)="changeRoute($event)" >Ver Detalles v2</p> </td>
+          <td> <a href="centroSalud/info/`+item.id+`#info-centro-salud"  class="btn btn-outline-primary" type="button">Ver Detalles</a> </td>
         </tr>`;
     }
   }
