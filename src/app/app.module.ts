@@ -16,6 +16,8 @@ import { ErrorPageComponent } from './error-page/error-page.component';
 import { CuerpoEncuestaTemplateComponent } from './cuerpo-encuesta-template/cuerpo-encuesta-template.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { DatosPersonalesComponent } from './datos-personales/datos-personales.component';
+import { InformacionViajeComponent } from './informacion-viaje/informacion-viaje.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -30,6 +32,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     SafeHtmlPipe,
     ErrorPageComponent,
     CuerpoEncuestaTemplateComponent,
+    DatosPersonalesComponent,
+    InformacionViajeComponent,
   ],
   imports: [
     BrowserModule,

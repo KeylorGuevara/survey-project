@@ -7,6 +7,8 @@ import { InicioComponent } from './inicio/inicio.component';
 import { CentrosSaludComponent } from './centros-salud/centros-salud.component';
 import { EntidadSaludComponent } from './entidad-salud/entidad-salud.component';
 import { ErrorPageComponent } from './error-page/error-page.component';
+import { DatosPersonalesComponent } from './datos-personales/datos-personales.component';
+import { InformacionViajeComponent } from './informacion-viaje/informacion-viaje.component';
 
 const routes: Routes = [
   {path: 'sintomas', component: SintomasComponent},
@@ -27,8 +29,15 @@ const routes: Routes = [
       }
     ]
   },
+  {path: 'datosPersonales', component: DatosPersonalesComponent,
+  children: 
+  [
+    {
+      path: 'informacionViaje', component: InformacionViajeComponent
+    }
+  ]
+},
   {path: 'inicio', component: InicioComponent},
-
    {path: '', redirectTo:'/inicio', pathMatch: 'full'},
    { path: '**', component: ErrorPageComponent   }
 ];
