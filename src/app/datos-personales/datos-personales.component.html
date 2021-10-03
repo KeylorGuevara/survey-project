@@ -1,25 +1,158 @@
 <div class="container">
-    <div class="p-5 mb-4 bg-light rounded-3">
-        <div class="container-fluid py-5">
-          <h1 class="display-5 fw-bold">Formulario de Registro</h1>
-          <p class="col-md-11 fs-5">
-            A continuación se muestra el Forumario de Registro oficial, 
-            por favor completarlo y enviarlo.
-          </p>
-        </div>
-      </div>
+  <div class="p-5 mb-4 bg-light rounded-3">
+    <div class="container-fluid py-5">
+      <h1 class="display-5 fw-bold">Formulario de Registro</h1>
+      <p class="col-md-11 fs-5">
+        A continuación se muestra el Forumario de Registro oficial, por favor
+        completarlo y enviarlo.
+      </p>
+    </div>
+  </div>
 </div>
 
 <div class="container">
-    <div class="mb-3">
-        <label for="exampleFormControlInput1" class="form-label">Email address</label>
-        <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
-      </div>
-      <div class="mb-3">
-        <label for="exampleFormControlTextarea1" class="form-label">Example textarea</label>
-        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-      </div>
+  <form #encuestaForm="ngForm" appIdentityRevealed>
+    <div [hidden]="encuestaForm.submitted">
+      <div
+        class="cross-validation"
+        [class.cross-validation-error]="
+          encuestaForm.touched || encuestaForm.dirty
+        "
+      >
+        <div class="row">
+          <div class="form-group">
+            <div class="col-2">
+              <div class="mb-3">
+                <label for="exampleFormControlInput1" class="form-label"
+                  >Cédula</label
+                >
+                <input
+                  type="number"
+                  class="form-control"
+                  id="exampleFormControlInput1"
+                  placeholder="Ingrese la cédula"
+                />
+                <div id="cedulaHelp" class="form-text">
+                  Utiliza tu cédula o DIMEX
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
 
-      <button type="button" class="btn btn-outline-primary" routerLink="informacionViaje" >Continuar la Encuesta</button>
+        <div class="row">
+            <div class="col-4">
+              <div class="mb-3">
+                <label for="exampleFormControlTextarea1" class="form-label"
+                  >Nombre</label
+                >
+                <input
+                  class="form-control"
+                  type="text"
+                  id="nombre"
+                  name="nombre"
+                  class="form-control"
+                  required
+                  minlength="4"
+                  appForbiddenName="Nombre"
+                  [(ngModel)]="encuestadoUno.nombre"
+                  #nombre="ngModel"
+                />
+              </div>
+            </div>
+            <div class="col-4 offset-md-2">
+              <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label"
+                  >Primer Apellido</label
+                >
+                <input
+                  type="text"
+                  class="form-control"
+                  id="exampleInputEmail1"
+                  aria-describedby="emailHelp"
+                />
+              </div>
+            </div>
+
+        </div>
+        <div class="row">
+            <div class="col-2">
+              <div class="mb-3">
+                <label for="exampleFormControlTextarea1" class="form-label"
+                  >Fecha Nacimiento</label
+                >
+                <input class="form-control" id="fechaNacimiento" type="date" />
+              </div>
+            </div>
+            <div class="col-2">
+              <div class="mb-3">
+                <label for="exampleFormControlInput1" class="form-label"
+                  >Teléfono de Contacto</label
+                >
+                <input
+                  type="number"
+                  class="form-control"
+                  id="exampleFormControlInput1"
+                  placeholder="Ingresa tu teléfono"
+                />
+                <div id="cedulaHelp" class="form-text">
+                  Digita tu número telefónico
+                </div>
+              </div>
+          </div>
+            <div class="col-4 offset-md-2">
+              <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label"
+                  >Correo Electrónico</label
+                >
+                <input
+                  type="email"
+                  class="form-control"
+                  id="exampleInputEmail1"
+                  aria-describedby="emailHelp"
+                />
+                <div id="emailHelp" class="form-text">
+                  Ten tranquilo, tu correo no será compartido con nadie más
+                </div>
+              </div>
+          </div>
+        </div>
+        <div class="row">
+            <div class="col-2">
+              <div class="mb-3">
+                <div class="form-group">
+                  <label for="exampleFormControlSelect1"
+                    >Selecciona tu sexo</label
+                  >
+                  <select
+                    class="form-control"
+                    id="sexo"
+                    name="sexo"
+                    class="form-control"
+                    required
+                    [(ngModel)]="encuestadoUno.sexo"
+                    #sexo="ngModel"
+                  >
+                    <option *ngFor="let p of sexos" [value]="p">{{ p }}</option>
+                  </select>
+                </div>
+              </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="offset-md-4 col">
+            <button
+              type="button"
+              class="btn btn-outline-primary col-4 btn-lg mx-auto"
+              routerLink="informacionViaje"
+            >
+              Continuar la Encuesta
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
 </div>
+
 <router-outlet></router-outlet>

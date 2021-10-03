@@ -11,16 +11,92 @@
       </div>
 </div>
 
-<div class="container">
-    <div class="mb-3">
-        <label for="exampleFormControlInput1" class="form-label">Email address</label>
-        <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
-      </div>
-      <div class="mb-3">
-        <label for="exampleFormControlTextarea1" class="form-label">Example textarea</label>
-        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-      </div>
 
-      <button type="button" class="btn btn-outline-primary" routerLink="informacionViaje" >Continuar la Encuesta</button>
+<div class="container">
+  <div class="row">
+    <div class="col-4">
+      <div class="mb-3">
+        <label for="exampleFormControlTextarea1" class="form-label">Procedencia</label>
+        <input
+          class="form-control"
+          id="exampleFormControlTextarea1"
+          type="text"
+        />
+      </div>
+    </div>
+    <div class="col-4 offset-md-2">
+      <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">Destino</label>
+        <input
+          type="text"
+          class="form-control"
+          id="exampleInputEmail1"
+          aria-describedby="emailHelp"
+        />
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-4">
+      <div class="mb-3">
+        <label for="exampleFormControlTextarea1" class="form-label">Fecha Salida</label>
+        <input
+          class="form-control"
+          id="fechaNacimiento"
+          type="date"
+        />
+      </div>
+    </div>
+    <div class="col-4 offset-md-2">
+      <div class="mb-3">
+        <label for="exampleFormControlTextarea1" class="form-label">Fecha Llegada</label>
+        <input
+          class="form-control"
+          id="fechaNacimiento"
+          type="date"
+        />
+      </div>
+    </div>
+
+  </div>
+
+<div class="row">
+  <div class="col-2">
+    <div class="mb-3">
+        <label for="exampleFormControlSelect1"  class="form-label">Medio de Traslado</label>
+        <select class="form-control" id="exampleFormControlSelect1">
+          <option>Aéreo</option>
+          <option>Terrestre</option>
+          <option>Marítimo</option>
+        </select>
+    </div>
+  </div>
+  <div class="col-2">
+    <div class="mb-3">
+      <label for="exampleInputEmail1" class="form-label">Número Tiquete</label>
+      <input
+        type="number"
+        class="form-control"
+        id="exampleInputEmail1"
+        aria-describedby="emailHelp"
+      />
+    </div>
+  </div>
 </div>
-<router-outlet></router-outlet>
+
+<br>
+<div class="row">
+  <div class="offset-md-4 col">
+    <button
+type="button"
+class="btn btn-outline-primary col-4 btn-lg mx-auto"
+routerLink="/sintomas"
+>
+Ver Sintomas
+</button>
+
+  </div>
+</div>
+
+
+</div>

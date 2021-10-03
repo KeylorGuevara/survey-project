@@ -7,6 +7,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DatosPersonalesComponent implements OnInit {
 
+
+  sexos = ['Masculino', 'Femenino', 'Binario'];
+  encuestadoUno = {cedula: '', nombre: '', 
+                  apellido:'', fechaNacimiento:'', 
+                  telefono:'', correoElectronico:'',
+                  sexo: this.sexos[0]};
   constructor() { }
 
   ngOnInit(): void {

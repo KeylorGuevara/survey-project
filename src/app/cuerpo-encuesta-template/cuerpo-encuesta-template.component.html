@@ -1,29 +1,78 @@
-<div class="container">
-    <h2>Formulario basado en Plantillas</h2>
-</div>
-<div class="container">
-    <form #encuestaForm='ngForm'>
-        <div [hidden]="encuestaForm.submitted">
-            <div class="cross-validation" [class.cross-validation-error]="(encuestaForm.touched || encuestaForm.dirty)">
-                <div class="form-group">
-                    <label for="nombre" class="form-label">Nombre</label>
-                    <input type="text" class="form-control" id="nombre" required minlength="5" appForbiddenValidation="Nombre"
-                    [(ngModel)]="encuestado.nombre" #nombre='ngModel'>
+<div>
 
-                    <div *ngIf="nombre.invalid && (nombre.touched || nombre.dirty)">
-                        <!-- <div *ngIf="nombre.errors?required">¡El nombre es requerido!</div>
-                        <div *ngIf="nombre.errors?minlength">¡El nombre es demasiado pequeño!</div>
-                        <div *ngIf="nombre.errors?forbiddenName">¡Debe de cambiar el texto!</div> -->
-                    </div>
-                </div>
+    <h2>Plantilla basada en formularios</h2>
+    <form #encuestaForm="ngForm" appIdentityRevealed>
+      <div [hidden]="encuestaForm.submitted">
+        <div class="cross-validation" [class.cross-validation-error]="(encuestaForm.touched || encuestaForm.dirty)">
+          <div class="form-group">
+            <label for="nombre">Nombre</label>
+            <input type="text" id="nombre" name="nombre" class="form-control"
+                  required minlength="4" appForbiddenName="Nombre"
+                  [(ngModel)]="encuestado.nombre" #nombre="ngModel">
+  
+            <div *ngIf="nombre.invalid && (nombre.dirty || nombre.touched)"
+                class="alert alert-danger">
+  
+              <div *ngIf="nombre.errors?.required">
+                El nombre es requerido.
+              </div>
+              <div *ngIf="nombre.errors?.minlength">
+                El nombre debe tener al menos 4 caracteres.
+              </div>
+              <div *ngIf="nombre.errors?.forbiddenName">
+                El nombre no puede ser Nombre
+              </div>
+  
             </div>
+          </div>
+  
+          <div class="form-group">
+            <label for="apellido">Apellido</label>
+            <input type="text" class="form-control"
+                   id="apellido"
+                   name="apellido"
+                   #apellido="ngModel"
+                   [(ngModel)]="encuestado.apellido"
+                   [ngModelOptions]="{ updateOn: 'blur' }">
+  
+            <div *ngIf="apellido.invalid" class="alert apellido-errors">
+            </div>
+          </div>
         </div>
-        </form>
+  
+        <div class="form-group">
+          <label for="sexo">Sexo</label>
+          <select id="sexo"
+                  name="sexo" class="form-control"
+                  required [(ngModel)]="encuestado.sexo"
+                  #sexo="ngModel">
+            <option *ngFor="let p of sexos" [value]="p">{{p}}</option>
+          </select>
+  
+          <div *ngIf="sexo.errors && sexo.touched" class="alert">
+            <div *ngIf="sexo.errors.required">Debe seleccionar el sexo.</div>
+          </div>
         </div>
+  
+        <p class="alert alert-warning">Por favor complete el formulario para habilitar el botón de envío.</p>
+        <button type="submit" class="btn btn-info"
+                [disabled]="encuestaForm.invalid">Enviar</button>
+        <button type="button" class="btn btn-info"
+                (click)="encuestaForm.resetForm({})">Limpiar</button>
+      </div>
+  
+      <div class="submitted-message" *ngIf="encuestaForm.submitted">
+        <p>Se añadió un nuevo encuestado, con el nombre: {{ encuestaForm.value.nombre }}!</p>
+        <button (click)="encuestaForm.resetForm({})" class="btn btn-info">Agregar otro encuestado</button>
+      </div>
+    </form>
+  </div>
 
+<!--
+    A nivel global de formulario hay dos validaciones de error específicas y globales que validan 
+    el formulario como un todo
 
-<!-- 
-    validaciones básicas:
-    touched: cambios en el form
-    dirty: tiene un error
+    touched: define si hubieron cambios en el formulario
+    dirty: si el formulario en general tiene algún error
+
 -->

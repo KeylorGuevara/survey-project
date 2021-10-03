@@ -7,9 +7,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CuerpoEncuestaTemplateComponent implements OnInit {
 
-  sexos:String[] = ['Masculino', 'Femenino', 'Otro']; 
+  sexos = ['Masculino', 'Femenino', 'Otro'];
 
-  encuestado = {nombre: 'Nombre', apellido: 'Apellido', sexo: this.sexos[0]};
+  encuestado = {nombre: '', apellido: '', sexo: this.sexos[0]};
   constructor() { }
 
   ngOnInit(): void {
